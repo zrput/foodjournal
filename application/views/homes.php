@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="<?php echo base_url('asset/css/paper-kit.css?v=2.2.0') ?>">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" href="<?php echo base_url('asset/demo/demo.css') ?>">
+  <style>
+    dd {
+      text-align: justify;
+    }
+  </style>
 </head>
 <body>
 
@@ -71,12 +76,12 @@
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="page-header" data-parallax="false" style="background-image: url('<?php echo base_url('11.png'); ?>');">
+  <div class="page-header" data-parallax="flase" style="background-image: url('<?php echo base_url('asset/2.png'); ?>');">
     <div class="filter"></div>
     <div class="container">
       <div class="motto text-center">
-        <h2><b> Welcome to food journal website</b></h2>
-        <h3>Find your food nutrition here.</h3>
+        <h2><b> Selamat Datang Di Website Jurnal Makanan</b></h2>
+        <h3>Coba Cari Makanan Disini.</h3>
         <br />
         <form action="" method="post">
         <div class="row justify-content-center">
@@ -100,9 +105,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">About Website</h2>
-            <h5 class="description"><b>This website for food journaling but you must sign-in first if you want to use website feature. </b></h5>
-            <br>
+            
+              <h2 class="title">Tentang Website</h2>
+              <dd><h5 class="description">Website Food Journal ini memiliki fitur utama sebagai buku harian makanan yang membantu pengguna melakukan pencatatan dengan memasukan input berupa makanan yang dikonsumsi perhari, pola tidur, jenis BAB, catatan harian, catatan mood dan symptom. Program ini biasanya digunakan oleh orang yang ingin menjaga pola makan sehat dan melakukan pelacakan symptom atau mood terhadap makanan yang telah dikonsumsi. Selain itu pada website ini juga tersedia berbagai macam artikel dan berbagai macam food catalogs.</h5></dd>
+              <br>
+            
             <a href="#paper-kit" class="btn btn-danger btn-round">See Details</a>
           </div>
         </div>
@@ -163,7 +170,7 @@
     <!-- member feature -->
     <div class="section section-dark text-center">
       <div class="container">
-        <h2 class="title">Benefit Join Member</h2>
+        <h2 class="title">Keuntungan Daftar Akun</h2>
         <div class="row">
           <div class="col-md-4">
             <div class="card card-profile card-plain">
@@ -175,12 +182,12 @@
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
-                    <h4 class="card-title">Henry Ford</h4>
-                    <h6 class="card-category">Product Manager</h6>
+                    <h4 class="card-title">Dapat Mencatat</h4>
+                    <!-- <h6 class="card-category">Product Manager</h6> -->
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  Teamwork is so important that it is virtually impossible for you to reach the heights of your capabilities or make the money that you want without becoming very good at it.
+                  Mencatat makanan dan minuman, symptom / gejala, mood, buang air besar, tidur, dan catatan harian.
                 </p>
               </div>
               <div class="card-footer text-center">
