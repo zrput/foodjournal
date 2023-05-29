@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 105vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ebebeb;
+}
+
+.login a:link{
+    text-decoration: none;
+}
+
+.login{
+    width: 452px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 3px;
+    background: #ffffff;
+}
+
+.login h1{
+    font-size: 36px;
+    margin-bottom: 25px;
+    margin-top:25px;
+}
+
+.login form{
+    font-size: 20px;
+}
+
+.login form .form-group{
+    margin-bottom: 12px;
+    width: 95%;
+    margin-left: 10px;
+}
+
+.login form input[type="submit"]{
+    font-size: 20px;
+    width: 95%;
+    margin-left: 10px;
+}
+
+.login form .register center{
+    width: 70%;
+    margin-left: 60px;
+    
+}
+
+.login form .register center p{
+    font-size: 16px;
+    border-bottom: 1px solid #a5a5a5;
+    border-bottom-width:50% ;
+    padding: 12px;
+    
+}
+
+.login form .row .col{
+    display: flex;
+    
+}
+
+.login form .row .col .form-check{
+    display: flex;
+}
+
+.login form .row .col .form-check input[type="radio"]{
+    margin-left: 25px;
+    margin-top:28px;
+}
+
+.login form .row .col .form-check label{
+    margin-left: 20px;
+    margin-top: 22px;
+}
+
+.login form .row .col p{
+    width: 90px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    body{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ebebeb;
+    }
+
+    .login{
+        width: 300px;
+        height: 600px;
+        padding: 20px;
+        border-radius: 3px;
+        background: #ffffff;
+        justify-content: center;
+    }
+
+    .login h1{
+        font-size: 28px;
+        margin-bottom: 20px;
+        margin-top: 14px;
+    }
+
+    .login form{
+        font-size: 12px;
+    }
+
+    .login form .form-group{
+        margin-bottom: 12px;
+        width: 95%;
+        height: 50%;
+        margin-left: 10px;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .login form .row .col .form-check input[type="radio"]{
+    margin-left: 25px;
+    margin-top:25px;
+    }
+
+    .login form .row .col p {
+        width: 90px;
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .form-check.form-check-inline {
+        display: inline-block;
+        margin-right: 1rem;
+        padding-left: 0px;
+    }
+
+    .login form .row .col .form-check label{
+        margin-left: 20px;
+        margin-top: 21px;
+    }
+    
+    .login form .row .col p{
+        width: 90px;
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-right: 10px;
+        font-size: 12px;
+    }
+
+    .login form .register center p{
+        font-size: 12px;
+        border-bottom: 1px solid #a5a5a5;
+        border-bottom-width:50% ;
+        padding: 12px;
+        margin-right: 28px;
+    }
+    
+    .login form input[type="submit"]{
+        font-size: 12px;
+        width: 95%;
+        margin-left: 10px;
+    }
+
+}
