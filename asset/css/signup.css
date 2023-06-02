@@ -5,7 +5,7 @@
 }
 
 body{
-    height: 105vh;
+    height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,16 +88,22 @@ body{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     body{
-        height: 100vh;
+        height: 115vh;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #ebebeb;
     }
 
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 12px;
+    }
+
     .login{
         width: 300px;
-        height: 600px;
+        height: 660px;
         padding: 20px;
         border-radius: 3px;
         background: #ffffff;
