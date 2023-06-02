@@ -11,42 +11,46 @@
     <script src="https://kit.fontawesome.com/bde1ebf728.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/signup.css');?>">
     <!--end of bootstrap 5-->
-    <title>Document</title>
+    <title><?php echo $title; ?></title>
 </head>
 <body>
     <div class="login">
-        <a href="#" style="margin-top: 20px;"><--Back</a>
+        <a href="<?php echo base_url('guest/home') ?>" style="margin-top: 20px;"><--Back</a>
         <h1 class="text-center">Sign Up</h1>
-        <form>
+        <form action="<?php echo base_url('auth/signup') ?>" method="post">
         <div class="form-group">
                 <label class="form-label" for="name">Fullname</label>
-                <input class="form-control" type="text" id="name">
+                <input name="name" class="form-control" type="text" id="name">
+                <h6 class="text-danger"><?php echo form_error('name')?></h6>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">Date of birth</label>
-                <input class="form-control" type="date" id="date">
+                <input name="date" class="form-control" type="date" id="date">
+                <h6 class= "text-danger"><?php echo form_error('date')?></h6>
             </div>
             <div class="row">
                 <div class="col">
                 <p>Gender : </p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <input class="form-check-input" type="radio" name="gen" value="laki-laki">
                     <label class="form-check-label" for="inlineRadio1">Man</label><br>
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <input class="form-check-input" type="radio" name="gen" value="perempuan">
                     <label class="form-check-label" for="inlineRadio2">Woman</label>
                 </div>
                 </div>
+                <h6 class="text-danger ms-2"><?php echo form_error('gen')?></h6>
             </div>
             <div class="form-group">
                 <label class="form-label" style="margin-top: 20px;"for="email">Email</label>
-                <input class="form-control" type="email" id="email">
+                <input name="email" class="form-control" type="email" id="email">
             </div>
             <div class="form-group">
                 <label class="form-label" for="Password">Password</label>
-                <input class="form-control" type="password" id="password">
+                <input name="password" class="form-control" type="password" id="password">
+                <h6 class= "text-danger"><?php echo form_error('password')?></h6>
             </div>
             <div class="register">
-            <center><p>already have account? <a href="#">login now!</a></p></center>
+            <center><p>sudah punya akun? <a href="<?php echo base_url('auth')?>">login disini!</a></p></center>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign Up">
         </form>

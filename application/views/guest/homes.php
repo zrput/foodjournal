@@ -52,11 +52,11 @@
             <a href="../index.html" class="nav-link"><ion-icon name="gift-outline"></ion-icon> Benefit</a>
           </li>
           <li class="nav-item">
-            <a href="" title="Ingfokan Login terkini" class="btn btn-primary btn-round">Login</a>
+            <a href="<?php echo base_url('auth')?>" title="Ingfokan Login terkini" class="btn btn-primary btn-round">Login</a>
             
           </li>
           <li class="nav-item">
-            <a href="" title="Mari daftar cuy" class="btn btn-info btn-round">Signin</a>
+            <a href="<?php echo base_url('auth/signup')?>" title="Mari daftar cuy" class="btn btn-info btn-round">Signin</a>
 
           <!-- </li>
           <li class="nav-item">
