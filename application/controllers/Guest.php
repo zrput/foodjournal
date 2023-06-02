@@ -15,12 +15,12 @@ class Guest extends CI_Controller {
     }
 
     public function home(){
-        $this->load->view('homes');
+        $this->load->view('guest/homes');
         
     }
 
     public function artikel(){
-        $this->load->view('artikels');
+        $this->load->view('guest/artikels');
         
     }
 
