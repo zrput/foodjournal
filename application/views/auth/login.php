@@ -12,28 +12,37 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/loginpbl.css');?>">
     <!--end of bootstrap 5-->
     <title><?php echo $title; ?></title>
+    <style>
+        body {
+            background-image: url("<?php echo base_url('asset/12.png'); ?>");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body>
-    <div class="login">
-        <a href="<?php echo base_url('guest/home')?>"><--Back</a>
-        <h1 class="text-center">Login</h1>
-        <form action="<?php echo base_url('auth') ?>" method="post" >
-            <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input name="email" class="form-control" type="email" id="email">
-                <h6 class="text-danger"><?php echo form_error('email')?></h6>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="Password">Password</label>
-                <input name="password" class="form-control" type="password" id="password">
-                <h6 class="text-danger"><?php echo form_error('password')?></h6>
-            </div>
-            <div class="register">
-            <center><p>belum punya akun? <a href="<?php echo base_url('auth/signup') ?>"> daftar disini!</a></p></center>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Login">
-        </form>
-    </div>
+    
+        <div class="login">
+            <a href="<?php echo base_url('guest/home')?>"><--Back</a>
+            <h1 class="text-center">Login</h1>
+            <form action="<?php echo base_url('auth') ?>" method="post" >
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input name="email" class="form-control" type="email" id="email">
+                    <h6 class="text-danger"><?php echo form_error('email')?></h6>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="Password">Password</label>
+                    <input name="password" class="form-control" type="password" id="password">
+                    <h6 class="text-danger"><?php echo form_error('password')?></h6>
+                </div>
+                <div class="register">
+                <center><p>belum punya akun? <a href="<?php echo base_url('auth/signup') ?>"> daftar disini!</a></p></center>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Login">
+            </form>
+        </div>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

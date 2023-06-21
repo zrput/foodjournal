@@ -25,7 +25,7 @@ class Auth extends CI_Controller {
     }
 
     public function signup(){
-        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[8]|max_length[12]', array('required' => '%s tidak boleh kosong'));
+        $this->form_validation->set_rules('password', 'password', 'trim|required|max_length[12]', array('required' => '%s tidak boleh kosong'));
         $this->form_validation->set_rules('name', 'name', 'required', array('required' => '%s tidak boleh kosong'));
         $this->form_validation->set_rules('email', 'email', 'required|valid_email');
         $this->form_validation->set_rules('date', 'date', 'required', array('required' => '%s tidak boleh kosong'));
@@ -51,6 +51,7 @@ class Auth extends CI_Controller {
         $response = $this->db->get_where('user',array('email' => $email , 'password' => $password))->row_array();
         if(count($response) > 1){
             $data = array(
+                'iduser' => $response['iduser'],
                 'name' => $response['name'],
                 'email' => $response['email'],
                 'gender' => $response['gender'],
@@ -60,7 +61,12 @@ class Auth extends CI_Controller {
             // var_dump($data);
             // die;
             $this->session->set_userdata($data);
-            redirect('Guest/home');
+            if($response['role'] == 'member'){
+                redirect(base_url('Main'));
+            } else {
+                redirect(base_url('Guest/home'));
+            }
+            // redirect(base_url('Tidur'));
         }
         
 
