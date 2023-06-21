@@ -12,17 +12,7 @@
             <button type="button" class="btn btn-primary" id="searchButton">Cari</button>
             
         <hr>
-            < id="searchResult"></div>
-        <?php if (!empty($results)): ?>
-        <ul>
-            <?php foreach ($results as $result): ?>
-            <li id="hasil-search"></li>
-            <?php endforeach; ?>
-        </ul>
-        <?php else: ?>
-        <p>Tidak ada hasil pencarian.</p>
-        <?php endif; ?>
-            
+            <div id="searchResult"></div>
         </div>
     </div>
   </div>
@@ -39,17 +29,24 @@
             data: { keyword: keyword },
             success: function(response) {
                 console.log(response);
-                for (var i = 0; i < response; i++) {
-                $('#searchResult').append(response[i].nama_makanan);
+
+                for (var i = 0; i < response.length; i++) {
+                    var makanan = response[i].nama_makanan;
+
+                    var resultItem = '<div>' +
+                    '<h6>' + makanan + '</h6>' +
+                    '</div>';
+                    // Append the HTML element to the modal
+                    $('#searchResult').append(resultItem);
                 }
-                $('#searchResult').html(response);
-                alert('Pencarian berhasil!');
-            },
-            error: function() {
+                $('#tambah').modal('show');
+                alert(response);
+                },
+                error: function() {
                 // Tambahkan aksi yang ingin dilakukan jika terjadi error pada permintaan AJAX di sini
                 // Contoh: Munculkan pesan error
                 alert('Terjadi kesalahan saat melakukan pencarian.');
-            }
+                }
             });
             });
         });

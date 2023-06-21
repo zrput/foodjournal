@@ -30,11 +30,8 @@ class Makanan extends CI_Controller {
         $user_id = $this->session->userdata('iduser');
         $keyword = $this->input->post('keyword');
         $data = $this->Mmakanan->searchdata($keyword, $user_id);
-        // var_dump($data);
         
-        json_encode($data);
-        // die;
-        // $this->load->view('search_results', $data);
+        echo json_encode($data);
       }
 
 }
