@@ -24,12 +24,18 @@ class Main extends CI_Controller {
             'tidur' => $this->Mmain->Ntidur($user_id),
             'catatan' => $this->Mmain->Ncatatan($user_id)
         );
+        $data['ket'] = $this->Mmain->detail_cmood();
 
-        // var_dump($data['gejala']);
-        // die;
+        
         $this->load->view('member/dashboard', $data);
         
     }
+
+    public function view_gejala(){
+        $this->load->view('member/pencarian_gejala');
+        
+    }
+
 
 }
 

@@ -17,7 +17,8 @@ class Mtidur extends CI_Model {
     public function insert_tidur($user_id){
         $tambah = array(
             'tidur_idtidur' => $this->input->post('kualitas'),
-            'waktu' => $this->input->post('waktu'),
+            'waktu_mulai' => $this->input->post('waktu_m'),
+            'waktu_selesai' => $this->input->post('waktu_s'),
             'ket_tambahan' => $this->input->post('ket_tambahan'),
             'user_iduser'=> $user_id
             
@@ -44,7 +45,8 @@ class Mtidur extends CI_Model {
     public function update_tidur($user_id){
         $edit = array(
             'tidur_idtidur' => $this->input->post('kualitas'),
-            'waktu' => $this->input->post('waktu'),
+            'waktu_mulai' => $this->input->post('waktu_m'),
+            'waktu_selesai' => $this->input->post('waktu_s'),
             'ket_tambahan' => $this->input->post('ket_tambahan'),
             'user_iduser'=> $user_id
         );

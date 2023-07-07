@@ -18,8 +18,12 @@
                                       </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Waktu">Waktu</label>
-                                        <input type="datetime-local" class="form-control" name="waktu" required>
+                                        <label for="Waktu">Waktu Mulai Tidur</label>
+                                        <input type="datetime-local" class="form-control" name="waktu_m" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Waktu">Waktu Selesai Tidur</label>
+                                        <input type="datetime-local" class="form-control" name="waktu_s" required>
                                     </div>
                                     <div class="form-group">
                                       <label for="Keterangan">Keterangan Tambahan</label>

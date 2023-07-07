@@ -18,7 +18,7 @@
                                         </tr>
                                     </tfoot>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($ctn as $key) : $date = date('d-M-Y h:i A', strtotime($key['waktu']))?>
+                                    <?php foreach ($ctn as $key) : $date = date('d-M-Y H:i', strtotime($key['waktu']))?>
                                     <tbody>
                                         <tr>
                                             <th scope="row"><?php echo $no++?></th>

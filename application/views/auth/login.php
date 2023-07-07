@@ -21,14 +21,16 @@
     </style>
 </head>
 <body>
-    
         <div class="login">
             <a href="<?php echo base_url('guest/home')?>"><--Back</a>
             <h1 class="text-center">Login</h1>
-            <form action="<?php echo base_url('auth') ?>" method="post" >
+            <?php if ($this->session->flashdata('error')): ?>
+                <div class="alert alert-danger text-center"><?php echo $this->session->flashdata('error'); ?></div>
+            <?php endif; ?>
+            <form action="<?php echo base_url('Auth') ?>" method="post" >
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
-                    <input name="email" class="form-control" type="email" id="email">
+                    <input name="email" class="form-control" type="email" id="email" value="">
                     <h6 class="text-danger"><?php echo form_error('email')?></h6>
                 </div>
                 <div class="form-group">
@@ -41,9 +43,11 @@
                 </div>
                 <input class="btn btn-primary" type="submit" value="Login">
             </form>
+            
         </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
 </body>
 </html>

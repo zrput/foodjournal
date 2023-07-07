@@ -3,14 +3,20 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class user extends CI_Model {
+class Muser extends CI_Model {
 
     public function tambahdata(){
+        
+        $pass = $this->input->post('password');
+        // konversi supaya password selalu huruf kecil
+        $pass1 = strtolower($pass);
+        $password = md5($pass1);
+
         $tambah = array(
             'name' => $this->input->post('name'),
             'umur' => $this->input->post('date'),
             'email' => $this->input->post('email'),
-            'password' => md5($this->input->post('password')),
+            'password' => $password,
             'gender' => $this->input->post('gen'),
             'role' => 'member'
         );

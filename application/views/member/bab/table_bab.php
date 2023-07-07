@@ -100,7 +100,7 @@
                                                             <div class="modal-body">Yakin Ingin Menghapus Data?</div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                                                <a class="btn btn-primary" href="<?php echo base_url('Bab/hapus_bab/'. $key['id_user_bab']) ?>">Hapus</a>
+                                                                <a class="btn btn-danger" href="<?php echo base_url('Bab/hapus_bab/'. $key['id_user_bab']) ?>">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>

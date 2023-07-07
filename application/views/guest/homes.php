@@ -182,19 +182,20 @@
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
-                    <h4 class="card-title">Dapat Mencatat</h4>
+                    <h4 class="card-title">Dapat Melakukan pencatatan</h4>
                     <!-- <h6 class="card-category">Product Manager</h6> -->
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  Mencatat makanan dan minuman, symptom / gejala, mood, buang air besar, tidur, dan catatan harian.
+                  Dapat Mencatat makanan dan minuman anda dan kalorinya, mencatat gejala-gejala yang anda rasakan, mencatat suasana hati anda hari ini, 
+                  mencatat kondisi buang air besar anda hari ini, mencatat kulitas tidur anda hari ini, dan dapat membuat catatan harian.
                 </p>
               </div>
-              <div class="card-footer text-center">
+              <!-- <div class="card-footer text-center">
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-md-4">
@@ -207,19 +208,19 @@
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
-                    <h4 class="card-title">Sophie West</h4>
-                    <h6 class="card-category">Designer</h6>
+                    <h4 class="card-title">Bisa Melakukan Pencarian gejala</h4>
+                    <!-- <h6 class="card-category">Designer</h6> -->
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  A group becomes a team when each member is sure enough of himself and his contribution to praise the skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
+                Dapat mencari gejala-gejala yang dialami berdasarkan catatan gejala yang sudah dicatat sebelumnya dan dapatkan data-data yang terkait dengannya.
                 </p>
               </div>
-              <div class="card-footer text-center">
+              <!-- <div class="card-footer text-center">
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-md-4">
@@ -232,19 +233,19 @@
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
-                    <h4 class="card-title">Robert Orben</h4>
-                    <h6 class="card-category">Developer</h6>
+                    <h4 class="card-title">Bisa Melakukan Pencarian Mood / Suasana Hati</h4>
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  The strength of the team is each individual member. The strength of each member is the team. If you can laugh together, you can work together, silence isn’t golden, it’s deadly.
+                  Dapat mencari Mood / Suasana Hati yang dialami berdasarkan catatan Mood / Suasana Hati yang sudah dicatat sebelumnya dan menampilkan Nama Makanan yang sekiranya
+                  Membuat Mood / Suasana Hati merasa seperti yang dirasakan sekarang.
                 </p>
               </div>
-              <div class="card-footer text-center">
+              <!-- <div class="card-footer text-center">
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
                 <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

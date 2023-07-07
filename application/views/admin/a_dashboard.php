@@ -29,7 +29,7 @@
 
         <!-- Sidebar -->
 
-        <?php $this->load->view('member/sidebar');?> 
+        <?php $this->load->view('admin/a_sidebar');?> 
 
         <!-- End of Sidebar -->
 
@@ -65,57 +65,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="row">
-                         <!-- Cari Symptom -->
-                         <div class="col-xl-6 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Cari Symptom</div>
-                                                <form class="d-flex">
-                                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                                  <button class="btn btn-outline-success" onclick="window.location.href='<?php echo base_url('Main/view_gejala')?>'" type="button">Search</button>
-                                                </form>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-search fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-
-                        <!-- Cari mood -->
-                        <div class="col-xl-6 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Cari Mood</div>
-                                                <form action="<?= base_url('Cari_mood/hasil_cari/') ?>" method="post" class="d-flex">
-                                                    <select name="keyword" class="form-control">
-                                                        <?php foreach ($ket as $option): ?>
-                                                        <option value="<?php echo $option['nama_mood']; ?>"><?php echo $option['nama_mood']; ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                  <button class="btn btn-outline-success" type="submit">Search</button>
-                                                </form>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-search fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-
-                    <!-- Divider -->
-                    <hr class="divider">
-
+                    
                     <!-- Content Row -->
                     <div class="row">
 
@@ -123,12 +73,12 @@
                         
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Makanan')?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Makanan/Minuman</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $makanan?></div>
+                                                Makanan & Minuman Umum</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-utensils fa-2x text-gray-300"></i>
@@ -141,12 +91,12 @@
                         <!-- Symptom -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Gejala')?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Symptom</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $gejala?></div>
+                                                Artikel</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">11</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -155,18 +105,18 @@
                                 </a>
                             </div>
                         </div>
-
+                        
                         <!-- Mood -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Mood');?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mood
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $mood?></div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">23</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,12 +131,12 @@
                         <!-- Buang Air Besar -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Bab')?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Buang Air Besar</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $bab?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">23</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-poop fa-2x text-gray-300"></i>
@@ -199,12 +149,12 @@
                          <!-- Tidur -->
                          <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Tidur')?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Tidur</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tidur?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">99</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-bed fa-2x text-gray-300"></i>
@@ -217,12 +167,12 @@
                          <!-- Catatan Harian -->
                          <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
-                                <a class="card-body" href="<?php echo base_url('Catatan')?>">
+                                <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Catatan Harian</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $catatan?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">55</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-book-medical fa-2x text-gray-300"></i>
