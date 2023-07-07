@@ -35,7 +35,7 @@
                 </a>
                 <div id="cari" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Cari Symptom / gejala</a>
+                        <a class="collapse-item" href="<?= base_url('Cari_symptom') ?>">Cari Symptom / gejala</a>
                         <a class="collapse-item" href="<?= base_url('Cari_mood') ?>">Cari Mood</a>
                         
                     </div>
