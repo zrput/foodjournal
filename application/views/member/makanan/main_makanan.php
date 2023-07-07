@@ -100,12 +100,15 @@
                         <div class="card-header py-3 d-flex justify-content-between">
                             <h6 class="m-3 font-weight-bold text-primary">Data table Makanan/Minuman</h6>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">
+                            <button type="button" onclick="window.location.href='<?php echo base_url('Makanan/tambah_makanan')?>'" class="btn btn-primary">
                               Tambah Data +
                             </button>
+                            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">
+                              Tambah Data +
+                            </button> -->
                         </div>
                         <!-- Modal -->
-                        <?php $this->load->view('member/makanan/modal_makanan');?>
+                       
                         <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">

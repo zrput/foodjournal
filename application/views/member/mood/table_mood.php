@@ -20,7 +20,7 @@
                                         </tr>
                                     </tfoot>
                                     <?php $no = 1;?>
-                                    <?php foreach ($mood as $key) : $date = date('d-M-Y h:i A', strtotime($key['waktu'])) ?>
+                                    <?php foreach ($mood as $key) : $date = date('d-M-Y H:i', strtotime($key['waktu'])) ?>
                                     <tbody>
                                         <tr>
                                             <th scope="row"><?php echo $no++?></th>
@@ -93,7 +93,7 @@
                                                             <div class="modal-body">Yakin Ingin Menghapus Data?</div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                                                <a class="btn btn-primary" href="<?php echo base_url('Mood/hapus_mood/'. $key['id_user_mood']) ?>">Hapus</a>
+                                                                <a class="btn btn-danger" href="<?php echo base_url('Mood/hapus_mood/'. $key['id_user_mood']) ?>">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>

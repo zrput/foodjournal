@@ -82,7 +82,7 @@
                                                             <div class="modal-body">Yakin Ingin Menghapus Data?</div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                                                <a class="btn btn-primary" href="<?php echo base_url('gejala/hapus_gejala/'. $key['idsymptom']) ?>">Hapus</a>
+                                                                <a class="btn btn-danger" href="<?php echo base_url('gejala/hapus_gejala/'. $key['idsymptom']) ?>">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -8,7 +8,7 @@ class Auth extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model('user');
+        $this->load->model('Muser');
         
     }
     
@@ -40,16 +40,18 @@ class Auth extends CI_Controller {
     }
 
     public function tambahdata(){
-        $this->user->tambahdata();
+        $this->Muser->tambahdata();
         redirect(base_url('Auth'));
     }
 
 
-    public function verifikasi(){
+    private function verifikasi(){
         $email = $this->input->post('email');
-        $password = md5($this->input->post('password'));
+        $pass = $this->input->post('password');
+        // konversi supaya password selalu huruf kecil
+        $password = md5(strtolower($pass));
         $response = $this->db->get_where('user',array('email' => $email , 'password' => $password))->row_array();
-        if(count($response) > 1){
+        if($response !== null && count($response) > 1){
             $data = array(
                 'iduser' => $response['iduser'],
                 'name' => $response['name'],
@@ -64,15 +66,18 @@ class Auth extends CI_Controller {
             if($response['role'] == 'member'){
                 redirect(base_url('Main'));
             } else {
-                redirect(base_url('Guest/home'));
+                redirect(base_url('Admin'));
             }
-            // redirect(base_url('Tidur'));
+            
+        }else {
+            // Peringatan jika email atau password salah
+            $this->session->set_flashdata('error', 'Email atau password salah!!');
+            redirect(base_url('auth/index'));
         }
-        
-
     }
+
     
-    public function logout(){
+    function logout(){
         $this->session->sess_destroy();
         redirect(base_url('Auth'));
     }

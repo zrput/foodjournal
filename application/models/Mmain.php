@@ -5,8 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mmain extends CI_Model {
 
+    function detail_cmood(){
+        return $this->db->get('mood')->result_array();
+    }
+
     public function Nmakanan($id) {
-        $query = $this->db->query("select count(id_user_makanan) as makanan from user_makanan_minuman where user_iduser = $id");
+        $query = $this->db->query("select count(id_makanan_minuman) as makanan from user_makanan_minuman where user_iduser = $id");
         $result = $query->row_array();
         return $result['makanan'];
     }
