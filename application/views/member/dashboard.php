@@ -74,9 +74,9 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Cari Symptom</div>
-                                                <form class="d-flex">
-                                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                                  <button class="btn btn-outline-success" onclick="window.location.href='<?php echo base_url('Main/view_gejala')?>'" type="button">Search</button>
+                                                <form action="<?= base_url('Cari_symptom/hasil_cari_symptom') ?>" method="post" class="d-flex">
+                                                  <input name="keyword" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                                  <button class="btn btn-outline-success"  type="submit">Search</button>
                                                 </form>
                                         </div>
                                         <div class="col-auto">
@@ -97,6 +97,7 @@
                                                 Cari Mood</div>
                                                 <form action="<?= base_url('Cari_mood/hasil_cari/') ?>" method="post" class="d-flex">
                                                     <select name="keyword" class="form-control">
+                                                    <option value="">-- Pilih Mood --</option>
                                                         <?php foreach ($ket as $option): ?>
                                                         <option value="<?php echo $option['nama_mood']; ?>"><?php echo $option['nama_mood']; ?></option>
                                                         <?php endforeach; ?>

@@ -71,16 +71,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Cari Mood</div>
+                                                Cari Symptom</div>
 
-                                            <form class="d-flex" action="<?= base_url('Cari_mood/hasil_cari/') ?> " method="post">
-                                                <select name="keyword" class="form-control">
-                                                    <option value="">-- Pilih Mood --</option>
-                                                    <?php foreach ($ket as $option) : ?>
-                                                        <option value="<?php echo $option['nama_mood']; ?>"><?php echo $option['nama_mood']; ?></option>
-                                                    <?php endforeach; ?>
-                                                    <option value="">-- Pilih Mood --</option>
-                                                </select>
+                                            <form class="d-flex" action="<?= base_url('Cari_symptom/hasil_cari_symptom/') ?> " method="post">
+
+                                                <input class="form-control me-2" type="text" class="form-control" name="keyword" placeholder="Masukan Kata Kunci...">
                                                 <button class="btn btn-outline-success" type="submit">Search</button>
                                                 <div class="col-auto">
                                                     <i class="fas fa-search fa-2x text-gray-400"></i>
