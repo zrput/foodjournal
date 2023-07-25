@@ -18,8 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
+
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
 
     <style>
         .button-container {
@@ -29,7 +30,7 @@
             /* Optional: Tambahkan jarak antara button-form */
         }
     </style>
-
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -113,7 +114,7 @@
                                     <!-- <p class="text-left " style="color:#747474; font-weight: semi-bold; font-family: 'roboto';">*Notes : Di bawah ini adalah skala bristol</p> -->
 
                                     <!-- <?php $no = 1; ?>
-                                    <?php foreach ($data as $key) : $date = date('d-M-Y h:i A', strtotime($key['waktu'])) ?>
+                                    <?php foreach ($data as $key) : $date = date('d-M-Y H:i', strtotime($key['waktu'])) ?>
                                         <tbody>
                                             <tr>
 
@@ -132,7 +133,7 @@
 
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -150,64 +151,58 @@
                                                 </tr>
                                             </tfoot>
 
-                                            <?php
-                                            $no = 1;
-                                            $mergedResult = [];
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                $mergedResult = [];
 
-                                            foreach ($data as $waktu) {
-                                                $aa = $this->Mcari_symptom->merge_bab($waktu);
+                                                foreach ($data as $waktu) {
+                                                    $aa = $this->Mcari_symptom->merge_bab($waktu);
 
-                                                // Proses penggabungan data
-                                                foreach ($aa as $row) {
-                                                    $kunci = $row['id_user_bab'];
-                                                    if (!isset($uniqueData[$kunci])) {
-                                                        $found = false;
-                                                        foreach ($mergedResult as &$mergedRow) {
-                                                            if ($mergedRow['skala_bristol'] == $row['skala_bristol']) {
+                                                    // Proses penggabungan data
+                                                    foreach ($aa as $row) {
+                                                        $kunci = $row['id_user_bab'];
+                                                        if (!isset($uniqueData[$kunci])) {
+                                                            $found = false;
+                                                            foreach ($mergedResult as &$mergedRow) {
+                                                                if ($mergedRow['skala_bristol'] == $row['skala_bristol']) {
 
-                                                                $mergedRow['waktu'] == $row['waktu'];
-                                                                break;
+                                                                    $mergedRow['waktu'] == $row['waktu'];
+                                                                    break;
+                                                                }
                                                             }
+                                                            if (!$found) {
+                                                                $mergedResult[] = $row;
+                                                            }
+                                                            $uniqueData[$kunci] = true;
                                                         }
-                                                        if (!$found) {
-                                                            $mergedResult[] = $row;
-                                                        }
-                                                        $uniqueData[$kunci] = true;
                                                     }
                                                 }
-                                            }
-                                            // Mengurutkan array berdasarkan waktu secara descending
-                                            usort($mergedResult, function ($a, $b) {
-                                                return (strtotime($b['waktu']) / (60 * 60 * 24)) - (strtotime($a['waktu']) / (60 * 60 * 24));
-                                            });
-                                            ?>
+                                                // Mengurutkan array berdasarkan waktu secara descending
+                                                usort($mergedResult, function ($a, $b) {
+                                                    return (strtotime($b['waktu']) / (60 * 60 * 24)) - (strtotime($a['waktu']) / (60 * 60 * 24));
+                                                });
+                                                ?>
 
 
-                                            <!-- Tampilkan data dalam tabel -->
-                                            <?php if (empty($mergedResult)) { ?>
-                                                <tbody>
+                                                <!-- Tampilkan data dalam tabel -->
+
+
+                                                <?php foreach ($mergedResult as $key) : ?>
                                                     <tr>
-                                                        <td class="text-center" colspan="4"> Tidak ada data yang ditemukan. </td>
+                                                        <th class="text-center" scope="row"><?= $no++ ?></th>
+                                                        <td class="text-center"><?= $date ?></td>
+                                                        <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><img src="<?php echo base_url() . '/asset/pic/' . $key['foto'] ?>" alt="Foto" width="75"> <br>
+                                                            Skala (<?php echo $key['bab_idbab'] ?>) <br>
+                                                            <?php echo $key['ket'] ?>
+                                                        </td>
+                                                        <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><?php echo $key['warna'] ?></td>
+
                                                     </tr>
-                                                </tbody>
-                                            <?php } else { ?>
-                                                <tbody>
-
-                                                    <?php foreach ($mergedResult as $key) : ?>
-                                                        <tr>
-                                                            <th class="text-center" scope="row"><?= $no++ ?></th>
-                                                            <td class="text-center"><?= $date ?></td>
-                                                            <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><img src="<?php echo base_url() . '/asset/pic/' . $key['foto'] ?>" alt="Foto" width="75"> <br>
-                                                                Skala (<?php echo $key['bab_idbab'] ?>) <br>
-                                                                <?php echo $key['ket'] ?>
-                                                            </td>
-                                                            <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><?php echo $key['warna'] ?></td>
-
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            <?php } ?>
+                                                <?php endforeach; ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
 
@@ -265,6 +260,17 @@
             <!-- Page level custom scripts -->
             <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
             <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                });
+            </script>
+
+
 
 </body>
 

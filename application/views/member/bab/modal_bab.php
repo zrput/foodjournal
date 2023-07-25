@@ -8,34 +8,34 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form action="<?php echo base_url('Bab/add_bab')?>" method="post">
-                                    <div class="form-group">
-                                      <label for="Satuan">Pilih Skala Bristol</label>
-                                      <select name="bab" class="form-control">
-                                        <?php foreach ($ket as $option): ?>
-                                            <option value="<?php echo $option['idbab']; ?>"><?php echo $option['idbab']; ?></option>
-                                        <?php endforeach; ?>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Waktu">Waktu</label>
-                                        <input type="datetime-local" class="form-control" name="waktu" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Waktu">Warna</label>
-                                        <input type="text" class="form-control" name="warna" required>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="Keterangan">Keterangan Tambahan</label>
-                                      <textarea class="form-control" name="ket_tambahan" cols="30" rows="10"></textarea>
-                                    </div>
-                                    </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Tambah Data</button>
-                                        </div>
-                                </form>
+                                <form action="<?php echo base_url('Bab/add_bab') ?>" method="post">
+                                  <div class="form-group">
+                                    <label for="Satuan">Pilih Skala Bristol</label>
+                                    <select name="bab" class="form-control">
+                                      <option value="">-- Pilih Skala --</option>
+                                      <?php foreach ($ket as $option) : ?>
+                                        <option value="<?php echo $option['idbab']; ?>"><?php echo $option['idbab']; ?> <br> <?php echo $option['ket']; ?> <br></option>
+                                      <?php endforeach; ?>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Waktu">Waktu</label>
+                                    <input type="datetime-local" class="form-control" name="waktu" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Waktu">Warna</label>
+                                    <input type="text" class="form-control" name="warna" placeholder="Contoh: coklat tua" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Keterangan">Keterangan Tambahan</label>
+                                    <textarea class="form-control" name="ket_tambahan" cols="30" rows="10" placeholder="Masukan keterangan tambahan...."></textarea>
+                                  </div>
                               </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                              </div>
+                              </form>
                             </div>
                           </div>
-                        
+                        </div>

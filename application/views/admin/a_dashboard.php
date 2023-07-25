@@ -13,13 +13,12 @@
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('asset/fj/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -29,7 +28,7 @@
 
         <!-- Sidebar -->
 
-        <?php $this->load->view('admin/a_sidebar');?> 
+        <?php $this->load->view('admin/a_sidebar'); ?>
 
         <!-- End of Sidebar -->
 
@@ -50,14 +49,14 @@
 
                     <!-- Topbar Search -->
                     <span>
-                        Dashboard
+                        Dashboard Admin
                     </span>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - User Information -->
-                        <?php $this->load->view('member/userinfo');?>
+                        <?php $this->load->view('admin/userinfo'); ?>
                     </ul>
 
                 </nav>
@@ -65,20 +64,20 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+
                     <!-- Content Row -->
                     <div class="row">
 
                         <!-- Makanan minuman -->
-                        
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
-                                <a class="card-body" href="">
+                                <a class="card-body" href="<?php echo base_url('Info_umum') ?>">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Makanan & Minuman Umum</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $info_umum ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-utensils fa-2x text-gray-300"></i>
@@ -87,16 +86,16 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <!-- Symptom -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
-                                <a class="card-body" href="">
+                                <a class="card-body" href="<?php echo base_url('Artikel') ?>">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Artikel</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">11</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $artikel ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -105,18 +104,18 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <!-- Mood -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
-                                <a class="card-body" href="">
+                                <a class="card-body" href="<?php echo base_url('Admin_mood') ?>">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mood
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">23</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $admin_mood ?></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,12 +130,12 @@
                         <!-- Buang Air Besar -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
-                                <a class="card-body" href="">
+                                <a class="card-body" href="<?php echo base_url('Admin_bab') ?>">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Buang Air Besar</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">23</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $admin_bab ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-poop fa-2x text-gray-300"></i>
@@ -146,8 +145,8 @@
                             </div>
                         </div>
 
-                         <!-- Tidur -->
-                         <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- Tidur -->
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
@@ -162,10 +161,10 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
 
-                         <!-- Catatan Harian -->
-                         <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- Catatan Harian -->
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <a class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
@@ -180,7 +179,7 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                         </div> -->
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -210,7 +209,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo base_url('asset/fj/vendor/jquery/jquery.min.js'); ?>"></script>

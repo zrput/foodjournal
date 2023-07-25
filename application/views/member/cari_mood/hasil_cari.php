@@ -19,7 +19,7 @@
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
     <style>
         .btn-btn {
             display: flex;
@@ -28,6 +28,7 @@
             gap: 10px;
         }
     </style>
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -113,7 +114,7 @@
                                 <div class="card-body">
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -130,23 +131,28 @@
                                                     <th scope="col" class="text-center" style="background-color:#c7e9de; color:#747474; font-weight: bold; font-family: 'roboto';">Data Record</th>
                                                 </tr>
                                             </tfoot>
-                                            <?php $nos = 1; ?>
-                                            <?php if ($keyword) { ?>
-                                                <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>"</b>
-                                                <br>
-                                                "Ditampilkan berdasarkan frekuensi"
-                                                <p></p>
-                                            <?php } ?>
-                                            <?php if (empty($data[0]['nama_mood'])) { ?>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="4">Data yang dicari tidak ditemukan.</td>
-                                                    </tr>
-                                                </tbody>
-                                            <?php } else { ?>
-                                                <?php foreach ($data_count as $key) : $date = $key['waktu'] ? date('d-M-Y h:i A', strtotime($key['waktu'])) : ''; ?>
+                                            <tbody>
+                                                <?php $nos = 1; ?>
+                                                <?php if ($keyword) { ?>
+                                                    <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>"</b>
+                                                    <br>
+                                                    "Ditampilkan berdasarkan frekuensi"
+                                                    <hr>
+                                                    <p></p>
+                                                <?php } ?>
+                                                <?php if (empty($data[0]['nama_mood'])) { ?>
 
-                                                    <tbody>
+
+
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>Tidak ada data yang ditemukan</td>
+
+                                                <?php } else { ?>
+                                                    <?php foreach ($data_count as $key) : $date = $key['waktu'] ? date('d-M-Y H:i', strtotime($key['waktu'])) : ''; ?>
+
+
                                                         <tr>
                                                             <th class="text-center" scope="row"><?php echo $nos++ ?></th>
                                                             <td class="text-center"><?php echo $key['nama_mood'] ?></td>
@@ -190,11 +196,12 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                    </tbody>
-                                                <?php endforeach; ?>
-                                            <?php } ?>
+                                                    <?php endforeach; ?>
+                                                <?php } ?>
+                                            </tbody>
 
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
 
@@ -206,7 +213,7 @@
                                 <div class="card-body">
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable2" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -223,71 +230,67 @@
                                                     <th scope="col" class="text-center" style="background-color:#c7e9de; color:#747474; font-weight: bold; font-family: 'roboto';">Data Record</th>
                                                 </tr>
                                             </tfoot>
-                                            <?php $no = 1; ?>
-                                            <?php if ($keyword) { ?>
-                                                <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>" </b>
-                                                <br>
-                                                "Ditampilkan berdasarkan tanggal"
-                                                <p></p>
-                                            <?php } ?>
-                                            <?php if (empty($data[0]['nama_mood'])) { ?>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="4">Data yang dicari tidak ditemukan.</td>
-                                                    </tr>
-                                                </tbody>
-                                            <?php } else { ?>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php if ($keyword) { ?>
+                                                    <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>" </b>
+                                                    <br>
+                                                    "Ditampilkan berdasarkan tanggal"
+                                                    <hr>
+                                                    <p></p>
+                                                <?php } ?>
+
                                                 <?php foreach ($data as $key) : ?>
-                                                    <?php $date = $key['waktu'] ? date('d-M-Y h:i A', strtotime($key['waktu'])) : ''; ?>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row"><?php echo $no++ ?></th>
-                                                            <td><?php echo $date ?></td>
-                                                            <td><?php echo $key['nama_mood'] ?></td>
-                                                            <td>
-                                                                <div class="btn-btn">
-                                                                    <form action="<?= base_url('Cari_mood/frekuensi_mkn/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="sumbit" class="btn btn-outline-success"><i class="fa fa-eye"> </i> Frekuensi Makanan</button>
-                                                                    </form>
+                                                    <?php $date = $key['waktu'] ? date('d-M-Y H:i', strtotime($key['waktu'])) : ''; ?>
 
-                                                                    <form action="<?= base_url('Cari_mood/detail_makanan/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="submit" class="btn btn-outline-danger"><i class="fa fa-eye"> </i> Detail Makanan</button>
-                                                                    </form>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $no++ ?></th>
+                                                        <td><?php echo $date ?></td>
+                                                        <td><?php echo $key['nama_mood'] ?></td>
+                                                        <td>
+                                                            <div class="btn-btn">
+                                                                <form action="<?= base_url('Cari_mood/frekuensi_mkn/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="sumbit" class="btn btn-outline-success"><i class="fa fa-eye"> </i> Frekuensi Makanan</button>
+                                                                </form>
 
-                                                                    <form action="<?= base_url('Cari_mood/bab/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="sumbit" class="btn btn-outline-primary"><i class="fa fa-eye"> </i> BAB</button>
-                                                                    </form>
+                                                                <form action="<?= base_url('Cari_mood/detail_makanan/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="submit" class="btn btn-outline-danger"><i class="fa fa-eye"> </i> Detail Makanan</button>
+                                                                </form>
 
-                                                                    <form action="<?= base_url('Cari_mood/tidur/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-eye"> </i> Tidur</button>
-                                                                    </form>
+                                                                <form action="<?= base_url('Cari_mood/bab/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="sumbit" class="btn btn-outline-primary"><i class="fa fa-eye"> </i> BAB</button>
+                                                                </form>
 
-                                                                    <form action="<?= base_url('Cari_mood/symptom/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="sumbit" class="btn btn-outline-warning"><i class="fa fa-eye"> </i> Symptom</button>
-                                                                    </form>
+                                                                <form action="<?= base_url('Cari_mood/tidur/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-eye"> </i> Tidur</button>
+                                                                </form>
 
-                                                                    <form action="<?= base_url('Cari_mood/catatan/') ?> " method="post">
-                                                                        <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
-                                                                        <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
-                                                                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-eye"> </i> Catatan Harian</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                                <form action="<?= base_url('Cari_mood/symptom/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="sumbit" class="btn btn-outline-warning"><i class="fa fa-eye"> </i> Symptom</button>
+                                                                </form>
+
+                                                                <form action="<?= base_url('Cari_mood/catatan/') ?> " method="post">
+                                                                    <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+                                                                    <input type="hidden" name="tgl_mood" value="<?= $key['waktu'] ?>">
+                                                                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-eye"> </i> Catatan Harian</button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 <?php endforeach; ?>
-                                            <?php } ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
 
@@ -345,6 +348,23 @@
             <!-- Page level custom scripts -->
             <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
             <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                });
+            </script>
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable2').DataTable();
+                });
+            </script>
 
 </body>
 
