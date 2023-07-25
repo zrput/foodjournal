@@ -22,7 +22,8 @@ class Mcari_mood extends CI_Model
         $keyword = $this->input->post('keyword');
         $query = $this->db->query("select *  from user_mood 
         inner join mood on user_mood.mood_idmood = mood.idmood
-        where user_iduser = $user_id and mood.nama_mood = '$keyword'");
+        where user_iduser = $user_id and mood.nama_mood = '$keyword'
+        order by waktu");
         return $query->result_array();
     }
 

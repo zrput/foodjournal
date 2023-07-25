@@ -12,21 +12,21 @@
     <title>Data Makanan/Minuman</title>
 
     <!-- Custom fonts for this template -->
-    <link href="<?php echo base_url('asset/fj/vendor/fontawesome-free/css/all.min.css" rel="stylesheet');?>" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="<?php echo base_url('asset/fj/vendor/fontawesome-free/css/all.min.css" rel="stylesheet'); ?>" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
     <style>
         .result-btn-pilih {
-            margin-left: 10px; /* Atur jarak kiri button pilih*/
+            margin-left: 10px;
+            /* Atur jarak kiri button pilih*/
         }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -35,7 +35,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php $this->load->view('member/sidebar');?>
+        <?php $this->load->view('member/sidebar'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -54,14 +54,14 @@
                         </button>
                     </form>
 
-                   <span>Data Anda</span>
+                    <span>Data Anda</span>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
 
                         <!-- Nav Item - User Information -->
-                        <?php $this->load->view('member/userinfo');?>
+                        <?php $this->load->view('member/userinfo'); ?>
 
                     </ul>
 
@@ -77,78 +77,78 @@
 
                     <!-- DataTales Example -->
                     <div class="card-body col-md-8">
-                    <form id="myForm" method="post" action="<?php echo base_url('Makanan/guna_makanan'); ?>"> 
-                    <div class="form-inline"><!-- form data -->
-                    <div class="form-group mb-2">
-                        <label for="staticEmail2" class="sr-only"></label>
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Nama Makanan:">
-                    </div>
-                    <div class="form-group mx-sm-1 mb-2">
-                        <label class="sr-only"></label>
-                        <input type="hidden" class="form-control" name="idmkn" value="<?php echo $d1[0]['id_makanan'] ?>">
-                        
-                        <input type="text" class="form-control" name="nama_makanan" id="carinama"  value="<?php echo $d1[0]['nama_makanan'] ?>">
-                    </div>
-                    <button type="button" class="btn btn-primary mr-2 mb-2" onclick="search()">Cari</button>
-                    </div> <!-- form -->
+                        <form id="myForm" method="post" action="<?php echo base_url('Makanan/guna_makanan'); ?>">
+                            <div class="form-inline"><!-- form data -->
+                                <div class="form-group mb-2">
+                                    <label for="staticEmail2" class="sr-only"></label>
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Nama Makanan:">
+                                </div>
+                                <div class="form-group mx-sm-1 mb-2">
+                                    <label class="sr-only"></label>
+                                    <input type="hidden" class="form-control" name="idmkn" value="<?php echo $d1[0]['id_makanan'] ?>">
 
-                    <div class="form-group md-6">          
-                    <label>Bahan Makanan</label>
-                    
-                    <div id="inputsContainer">
-                    <?php foreach ($d2 as $key => $b) { ?>
-                        <div class="form-group input-group">
-                        <input type="hidden" name="idb[]" class="form-control" value="<?php echo $b['idbahan']; ?>">
-                        <input type="text" name="inputText[]" class="form-control" readonly value="<?php echo $b['nama_bahan']; ?>">
-                        
-                    </div>
-                    <?php } ?>
+                                    <input type="text" class="form-control" name="nama_makanan" id="carinama" value="<?php echo $d1[0]['nama_makanan'] ?>" onblur="removeTrailingSpace()">
+                                </div>
+                                <button type="button" class="btn btn-primary mr-2 mb-2" onclick="search()">Cari</button>
+                            </div> <!-- form -->
 
-                    <br>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
-                    <br>
-                    <div class="form-group">
-                        <label>Waktu</label>
-                        <input type="datetime-local" class="form-control" name="waktu" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Jumlah</label>
-                        <input type="number" class="form-control" name="jumlah" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Satuan</label>
-                        <select class="form-control" name="satuan" required>
-                            <option value="gram">Gram</option>
-                            <option value="sdt">sdt/satu sendok teh</option>
-                            <option value="sdm">sdm/satu sendok makan</option>
-                            <option value="ml">ml/mili liter</option>
-                            <option value="gelas">Gelas</option>
-                            <option value="mangkok">Mangkok</option>
-                            <option value="piring">Piring</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Kalori</label>
-                        <input type="number" class="form-control" name="kalori">
-                    </div>
+                            <div class="form-group md-6">
+                                <label>Bahan Makanan</label>
 
-                    <div class="form-group ">
-                        <label for="Keterangan">Keterangan Tambahan</label>
-                        <textarea class="form-control" name="ket_tambahan" cols="30" rows="10"></textarea>
+                                <div id="inputsContainer">
+                                    <?php foreach ($d2 as $key => $b) { ?>
+                                        <div class="form-group input-group">
+                                            <input type="hidden" name="idb[]" class="form-control" value="<?php echo $b['idbahan']; ?>">
+                                            <input type="text" name="inputText[]" class="form-control" readonly value="<?php echo $b['nama_bahan']; ?>">
+
+                                        </div>
+                                    <?php } ?>
+
+                                    <br>
+                                    <!-- Divider -->
+                                    <hr class="sidebar-divider my-0">
+                                    <br>
+                                    <div class="form-group">
+                                        <label>Waktu</label>
+                                        <input type="datetime-local" class="form-control" name="waktu" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jumlah</label>
+                                        <input type="number" class="form-control" name="jumlah" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Satuan</label>
+                                        <select class="form-control" name="satuan" required>
+                                            <option value="gram">Gram</option>
+                                            <option value="sdt">sdt/satu sendok teh</option>
+                                            <option value="sdm">sdm/satu sendok makan</option>
+                                            <option value="ml">ml/mili liter</option>
+                                            <option value="gelas">Gelas</option>
+                                            <option value="mangkok">Mangkok</option>
+                                            <option value="piring">Piring</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kalori</label>
+                                        <input type="number" class="form-control" name="kalori">
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="Keterangan">Keterangan Tambahan</label>
+                                        <textarea class="form-control" name="ket_tambahan" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">kirim</button>
+                                    </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">kirim</button>
-                    </div>
-                    </form>
+                    <!-- /.container-fluid -->
+
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
 
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Modal pencarian makanan-->
-            <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+                <!-- Modal pencarian makanan-->
+                <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -191,136 +191,144 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo base_url('asset/fj/vendor/jquery/jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('asset/fj/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+    <script src="<?php echo base_url('asset/fj/vendor/jquery/jquery.min.js'); ?>"></script>
+    <script src="<?php echo base_url('asset/fj/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?php echo base_url('asset/fj/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
+    <script src="<?php echo base_url('asset/fj/vendor/jquery-easing/jquery.easing.min.js'); ?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?php echo base_url('asset/fj/js/sb-admin-2.min.js');?>"></script>
+    <script src="<?php echo base_url('asset/fj/js/sb-admin-2.min.js'); ?>"></script>
 
     <!-- Page level plugins -->
-    <script src="<?php echo base_url('asset/fj/vendor/datatables/jquery.dataTables.min.js');?>"></script>
-    <script src="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.js');?>"></script>
+    <script src="<?php echo base_url('asset/fj/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?php echo base_url('asset/fj/js/demo/datatables-demo.js');?>"></script>
-    
+    <script src="<?php echo base_url('asset/fj/js/demo/datatables-demo.js'); ?>"></script>
+
     <script>
         function addInput() {
-        var inputsContainer = document.getElementById('inputsContainer');
-        var inputCount = inputsContainer.children.length;
+            var inputsContainer = document.getElementById('inputsContainer');
+            var inputCount = inputsContainer.children.length;
 
-        var inputGroup = document.createElement('div');
-        inputGroup.className = 'form-group input-group';
+            var inputGroup = document.createElement('div');
+            inputGroup.className = 'form-group input-group';
 
-        var input = document.createElement('input');
-        input.type = 'text';
-        input.name = 'inputText[]';
-        input.className = 'form-control';
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'inputText[]';
+            input.className = 'form-control';
 
-        var removeButton = document.createElement('button');
-        removeButton.type = 'button';
-        removeButton.onclick = function() {
-            removeInput(this);
-        };
-        removeButton.className = 'btn btn-danger';
-        removeButton.innerHTML = 'Hapus';
+            var removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.onclick = function() {
+                removeInput(this);
+            };
+            removeButton.className = 'btn btn-danger';
+            removeButton.innerHTML = 'Hapus';
 
-        var inputGroupAppend = document.createElement('div');
-        inputGroupAppend.className = 'input-group-append';
-        inputGroupAppend.appendChild(removeButton);
+            var inputGroupAppend = document.createElement('div');
+            inputGroupAppend.className = 'input-group-append';
+            inputGroupAppend.appendChild(removeButton);
 
-        inputGroup.appendChild(input);
-        inputGroup.appendChild(inputGroupAppend);
-        inputsContainer.appendChild(inputGroup);
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(inputGroupAppend);
+            inputsContainer.appendChild(inputGroup);
         }
 
         function removeInput(button) {
-        var inputGroup = button.parentNode.parentNode;
-        inputGroup.parentNode.removeChild(inputGroup);
+            var inputGroup = button.parentNode.parentNode;
+            inputGroup.parentNode.removeChild(inputGroup);
         }
 
         function search() {
-        var keyword = document.getElementById('carinama').value;
-        if (keyword === '') {
-            alert('Silakan masukkan kata kunci pencarian.');
-            return;
-        }
-        $.ajax({
-            url: '<?php echo base_url('Makanan/search_nama'); ?>',
-            type: 'POST',
-            data: { keyword: keyword },
-            dataType: 'json',
-
-            success: function(response) {
-                var searchResults = document.getElementById('searchResults');
-                searchResults.innerHTML = ''; // Bersihkan konten sebelumnya
-                if (response.d1) {
-                    console.log(response.d1);
-                    for (var i = 0; i < response.d1.length; i++) {
-                        var resultDiv = document.createElement('div');
-                        resultDiv.className = 'result-item';
-
-                        // Tampilkan nama makanan
-                        var namaMakananDiv = document.createElement('div');
-                        namaMakananDiv.className = 'result-nama-makanan';
-
-                        var namaMakanan = document.createElement('strong');
-                        namaMakanan.textContent = 'Nama Makanan: ';
-                        namaMakananDiv.appendChild(namaMakanan);
-
-                        var namaMakananValue = document.createElement('span');
-                        namaMakananValue.textContent = response.d1[i].nama_makanan;
-                        namaMakananDiv.appendChild(namaMakananValue);
-
-                        // Tombol Pilih
-                        var pilihButton = document.createElement('button');
-                        pilihButton.className = 'btn btn-primary btn-sm btn-pilih result-btn-pilih';
-                        pilihButton.textContent = 'Pilih';
-                        pilihButton.addEventListener('click', (function(makanan, id_Makanan) {
-                            return function() {
-                                // Mengambil id_makanan berdasarkan nama makanan
-                            // Mengarahkan ke URL dengan parameter id_makanan_minuman
-                            window.location.href = '<?php echo base_url("Makanan/getMakananById"); ?>?id_makanan_minuman=' + id_Makanan;
-                        };
-                        })(response.d1[i].nama_makanan, response.d1[i].id_makanan));
-                        namaMakananDiv.appendChild(pilihButton);
-
-                        resultDiv.appendChild(namaMakananDiv);
-
-                        // Tampilkan bahan-bahan
-                        var bahanList = document.createElement('ul');
-
-                        // Filter bahan sesuai dengan makanan yang relevan
-                        var bahanArray = response.d2.filter(function(bahan) {
-                            return bahan.id_makanan_minuman === response.d1[i].id_makanan;
-                        });
-                        // menampilkan nama bahan sesuai id_makanan
-                        for (var j = 0; j < bahanArray.length; j++) {
-                            var bahanItem = document.createElement('li');
-                            bahanItem.textContent = bahanArray[j].nama_bahan;
-
-                            bahanList.appendChild(bahanItem);
-                        }
-
-                        resultDiv.appendChild(bahanList);
-
-                        searchResults.appendChild(resultDiv);
-                    }
-                }
-
-                $('#searchModal').modal('show');
-            },
-
-            error: function(xhr, status, error) {
-                console.log(error);
+            var keyword = document.getElementById('carinama').value;
+            if (keyword === '') {
+                alert('Silakan masukkan kata kunci pencarian.');
+                return;
             }
-        });
+            $.ajax({
+                url: '<?php echo base_url('Makanan/search_nama'); ?>',
+                type: 'POST',
+                data: {
+                    keyword: keyword
+                },
+                dataType: 'json',
+
+                success: function(response) {
+                    var searchResults = document.getElementById('searchResults');
+                    searchResults.innerHTML = ''; // Bersihkan konten sebelumnya
+                    if (response.d1) {
+                        console.log(response.d1);
+                        for (var i = 0; i < response.d1.length; i++) {
+                            var resultDiv = document.createElement('div');
+                            resultDiv.className = 'result-item';
+
+                            // Tampilkan nama makanan
+                            var namaMakananDiv = document.createElement('div');
+                            namaMakananDiv.className = 'result-nama-makanan';
+
+                            var namaMakanan = document.createElement('strong');
+                            namaMakanan.textContent = 'Nama Makanan: ';
+                            namaMakananDiv.appendChild(namaMakanan);
+
+                            var namaMakananValue = document.createElement('span');
+                            namaMakananValue.textContent = response.d1[i].nama_makanan;
+                            namaMakananDiv.appendChild(namaMakananValue);
+
+                            // Tombol Pilih
+                            var pilihButton = document.createElement('button');
+                            pilihButton.className = 'btn btn-primary btn-sm btn-pilih result-btn-pilih';
+                            pilihButton.textContent = 'Pilih';
+                            pilihButton.addEventListener('click', (function(makanan, id_Makanan) {
+                                return function() {
+                                    // Mengambil id_makanan berdasarkan nama makanan
+                                    // Mengarahkan ke URL dengan parameter id_makanan_minuman
+                                    window.location.href = '<?php echo base_url("Makanan/getMakananById"); ?>?id_makanan_minuman=' + id_Makanan;
+                                };
+                            })(response.d1[i].nama_makanan, response.d1[i].id_makanan));
+                            namaMakananDiv.appendChild(pilihButton);
+
+                            resultDiv.appendChild(namaMakananDiv);
+
+                            // Tampilkan bahan-bahan
+                            var bahanList = document.createElement('ul');
+
+                            // Filter bahan sesuai dengan makanan yang relevan
+                            var bahanArray = response.d2.filter(function(bahan) {
+                                return bahan.id_makanan_minuman === response.d1[i].id_makanan;
+                            });
+                            // menampilkan nama bahan sesuai id_makanan
+                            for (var j = 0; j < bahanArray.length; j++) {
+                                var bahanItem = document.createElement('li');
+                                bahanItem.textContent = bahanArray[j].nama_bahan;
+
+                                bahanList.appendChild(bahanItem);
+                            }
+
+                            resultDiv.appendChild(bahanList);
+
+                            searchResults.appendChild(resultDiv);
+                        }
+                    }
+
+                    $('#searchModal').modal('show');
+                },
+
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function removeTrailingSpace() {
+            const inputElement = document.getElementById('carinama');
+            const text = inputElement.value;
+            inputElement.value = text.trim();
         }
     </script>
 </body>

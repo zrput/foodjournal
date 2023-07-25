@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">

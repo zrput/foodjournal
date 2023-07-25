@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Food Journaling - Dashboard</title>
+    <title>Food Journaling - Dashboard </title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('asset/fj/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -19,7 +19,9 @@
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
+
+
 
     <style>
         .button-container {
@@ -29,7 +31,7 @@
             /* Optional: Tambahkan jarak antara button-form */
         }
     </style>
-
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -111,7 +113,7 @@
                                     <hr>
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -127,60 +129,61 @@
                                                 </tr>
                                             </tfoot>
 
-                                            <?php
-                                            $no = 1;
-                                            $mergedResult = [];
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                $mergedResult = [];
 
-                                            foreach ($data as $waktu) {
-                                                $aa = $this->Mcari_symptom->test2($waktu);
+                                                foreach ($data as $waktu) {
+                                                    $aa = $this->Mcari_symptom->test2($waktu);
 
-                                                // Proses penggabungan data
+                                                    // Proses penggabungan data
 
-                                                foreach ($aa as $row) {
-                                                    $kunci = $row['id_user_makanan'];
-                                                    if (!isset($uniqueData[$kunci])) {
-                                                        $found = false;
-                                                        foreach ($mergedResult as &$mergedRow) {
-                                                            if ($mergedRow['nama_makanan'] == $row['nama_makanan']) {
+                                                    foreach ($aa as $row) {
+                                                        $kunci = $row['id_user_makanan'];
+                                                        if (!isset($uniqueData[$kunci])) {
+                                                            $found = false;
+                                                            foreach ($mergedResult as &$mergedRow) {
+                                                                if ($mergedRow['nama_makanan'] == $row['nama_makanan']) {
 
-                                                                $mergedRow['waktu'] == $row['waktu'];
-                                                                break;
+                                                                    $mergedRow['waktu'] == $row['waktu'];
+                                                                    break;
+                                                                }
                                                             }
+                                                            if (!$found) {
+                                                                $mergedResult[] = $row;
+                                                            }
+                                                            $uniqueData[$kunci] = true;
                                                         }
-                                                        if (!$found) {
-                                                            $mergedResult[] = $row;
-                                                        }
-                                                        $uniqueData[$kunci] = true;
                                                     }
                                                 }
-                                            }
-                                            // Mengurutkan array berdasarkan waktu secara descending
-                                            usort($mergedResult, function ($a, $b) {
-                                                return (strtotime($b['waktu']) / (60 * 60 * 24)) - (strtotime($a['waktu']) / (60 * 60 * 24));
-                                            });
-                                            ?>
+                                                // Mengurutkan array berdasarkan waktu secara descending
+                                                usort($mergedResult, function ($a, $b) {
+                                                    return (strtotime($b['waktu']) / (60 * 60 * 24)) - (strtotime($a['waktu']) / (60 * 60 * 24));
+                                                });
+                                                ?>
 
 
-                                            <!-- Tampilkan data dalam tabel -->
-                                            <?php if (empty($mergedResult)) { ?>
-                                                <tbody>
+                                                <!-- Tampilkan data dalam tabel -->
+                                                <?php if (empty($mergedResult)) { ?>
                                                     <tr>
+                                                        <td></td>
+                                                        <td></td>
                                                         <td class="text-center" colspan="4"> Tidak ada data yang ditemukan. </td>
                                                     </tr>
-                                                </tbody>
-                                            <?php } else { ?>
-                                                <tbody>
+                                                <?php } else { ?>
                                                     <?php foreach ($mergedResult as $tes) : ?>
                                                         <tr>
                                                             <th class="text-center" scope="row"><?= $no++ ?></th>
-                                                            <td class="text-center"><?= date('d-M-Y h:i: A', strtotime($tes['waktu'])) ?></td>
+                                                            <td class="text-center"><?= date('d-M-Y H:i', strtotime($tes['waktu'])) ?></td>
                                                             <td class="text-center"><?= $tes['nama_makanan'] ?></td>
 
                                                         </tr>
                                                     <?php endforeach; ?>
-                                                </tbody>
-                                            <?php } ?>
+                                                <?php } ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
 
@@ -238,6 +241,15 @@
             <!-- Page level custom scripts -->
             <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
             <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                });
+            </script>
 
 </body>
 

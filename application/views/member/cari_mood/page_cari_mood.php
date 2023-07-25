@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">

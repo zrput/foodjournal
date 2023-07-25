@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Food Journaling - Dashboard</title>
+    <title>Cari Symptom</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('asset/fj/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -18,8 +18,11 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
+
+
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
+
     <style>
         .btn-btn {
             display: flex;
@@ -28,6 +31,8 @@
             gap: 10px;
         }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
+    
 </head>
 
 <body id="page-top">
@@ -105,7 +110,7 @@
                                 <div class="card-body">
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -122,23 +127,25 @@
                                                     <th scope="col" class="text-center" style="background-color:#c7e9de; color:#747474; font-weight: bold; font-family: 'roboto';">Data Record</th>
                                                 </tr>
                                             </tfoot>
-                                            <?php $nos = 1; ?>
-                                            <?php if ($keyword) { ?>
-                                                <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>"</b>
-                                                <br>
-                                                "Ditampilkan berdasarkan frekuensi"
-                                                <p></p>
-                                            <?php } ?>
-                                            <?php if (empty($data[0]['nama_symptom'])) { ?>
-                                                <tbody>
+                                            <tbody>
+                                                <?php $nos = 1; ?>
+                                                <?php if ($keyword) { ?>
+                                                    <b>Menampilkan data dengan kata kunci : "<?= $keyword; ?>"</b>
+                                                    <br>
+                                                    "Ditampilkan berdasarkan frekuensi"
+                                                    <p></p>
+                                                <?php } ?>
+                                                <hr>
+                                                <?php if (empty($data[0]['nama_symptom'])) { ?>
                                                     <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
                                                         <td colspan="4">Data yang dicari tidak ditemukan.</td>
                                                     </tr>
-                                                </tbody>
-                                            <?php } else { ?>
-                                                <?php foreach ($data_count as $key) : $date = $key['waktu'] ? date('d-M-Y h:i A', strtotime($key['waktu'])) : ''; ?>
+                                                <?php } else { ?>
+                                                    <?php foreach ($data_count as $key) : ?>
 
-                                                    <tbody>
                                                         <tr>
                                                             <th scope="row" class="text-center"><?php echo $nos++ ?></th>
                                                             <td class="text-center"><?php echo $key['nama_symptom'] ?></td>
@@ -182,10 +189,11 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                    </tbody>
-                                                <?php endforeach; ?>
-                                            <?php } ?>
+                                                    <?php endforeach; ?>
+                                                <?php } ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +205,7 @@
 
                                     <div class="table-responsive">
 
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable2" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -223,10 +231,9 @@
                                                 <p></p>
                                             <?php } ?>
                                             <hr>
-
-                                            <?php $no = 1; ?>
-                                            <?php foreach ($data as $key) : $date = date('d-M-Y h:i A', strtotime($key['waktu'])) ?>
-                                                <tbody>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($data as $key) : $date = date('d-M-Y H:i ', strtotime($key['waktu'])) ?>
                                                     <tr>
                                                         <th scope="row" class="text-center"><?php echo $no++ ?></th>
                                                         <td class="text-center"><?php echo $date ?></td>
@@ -272,9 +279,10 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            <?php endforeach; ?>
+                                                <?php endforeach; ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
                             </div>
@@ -330,6 +338,26 @@
             <!-- Page level custom scripts -->
             <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
             <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                });
+            </script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable2').DataTable();
+                });
+            </script>
+
+
 
 </body>
 

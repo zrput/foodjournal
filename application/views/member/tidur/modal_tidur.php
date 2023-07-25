@@ -8,34 +8,35 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form action="<?php echo base_url('Tidur/add_tidur')?>?>" method="post">
-                                    <div class="form-group">
-                                      <label>Kualitas Tidur</label>
-                                      <select class="form-control" name="kualitas">
-                                        <?php foreach ($ket as $option): ?>
-                                            <option value="<?php echo $option['idtidur'];?>"><?php echo $option['kualitas_tidur']; ?></option>
-                                        <?php endforeach; ?>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Waktu">Waktu Mulai Tidur</label>
-                                        <input type="datetime-local" class="form-control" name="waktu_m" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Waktu">Waktu Selesai Tidur</label>
-                                        <input type="datetime-local" class="form-control" name="waktu_s" required>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="Keterangan">Keterangan Tambahan</label>
-                                      <textarea class="form-control" name="ket_tambahan" cols="30" rows="10"></textarea>
-                                    </div>
-                              
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                <form action="<?php echo base_url('Tidur/add_tidur') ?>?>" method="post">
+                                  <div class="form-group">
+                                    <label>Kualitas Tidur</label>
+                                    <select class="form-control" name="kualitas">
+                                      <option value="">-- Pilih Kualitas tidur --</option>
+                                      <?php foreach ($ket as $option) : ?>
+                                        <option value="<?php echo $option['idtidur']; ?>"><?php echo $option['kualitas_tidur']; ?></option>
+                                      <?php endforeach; ?>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Waktu">Waktu Mulai Tidur</label>
+                                    <input type="datetime-local" class="form-control" name="waktu_m" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Waktu">Waktu Selesai Tidur</label>
+                                    <input type="datetime-local" class="form-control" name="waktu_s" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Keterangan">Keterangan Tambahan</label>
+                                    <textarea class="form-control" name="ket_tambahan" cols="30" rows="10" placeholder="Masukan keterangan tambahan...."></textarea>
+                                  </div>
+
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                  </div>
+                                </form>
                               </div>
-                              </form>
                             </div>
                           </div>
-                        </div>
                         </div>

@@ -19,7 +19,7 @@
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
 
     <style>
         .button-container {
@@ -29,7 +29,7 @@
             /* Optional: Tambahkan jarak antara button-form */
         }
     </style>
-
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 </head>
 
 <body id="page-top">
@@ -111,7 +111,7 @@
                                     <hr>
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -177,8 +177,8 @@
                                             <?php foreach ($mergedResult as $key) : ?>
                                                 <tr>
                                                     <th class="text-center" scope="row"><?= $no++ ?></th>
-                                                    <td class="text-center"><?= date('d-M-Y H:i A', strtotime($key['waktu_mulai'])) ?></td>
-                                                    <td class="text-center"><?= date('d-M-Y H:i A', strtotime($key['waktu_selesai'])) ?></td>
+                                                    <td class="text-center"><?= date('d-M-Y H:i', strtotime($key['waktu_mulai'])) ?></td>
+                                                    <td class="text-center"><?= date('d-M-Y H:i', strtotime($key['waktu_selesai'])) ?></td>
                                                     <td class="text-center"><?php echo $key['kualitas_tidur'] ?></td>
                                                     <td class="text-center"><?php echo $key['ket_tambahan'] ?></td>
 
@@ -187,6 +187,7 @@
                                         <?php } ?>
                                         </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +245,17 @@
         <!-- Page level custom scripts -->
         <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
         <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+
+        <!-- Page level plugins -->
+        <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
+
 
 </body>
 

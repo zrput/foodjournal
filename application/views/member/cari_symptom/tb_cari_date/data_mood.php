@@ -18,8 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('asset/fj/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
+
     <!-- Custom styles for this page -->
-    <link href="<?php echo base_url('asset/fj/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/dataTables/datatables.min.css'); ?>" rel="stylesheet">
 
     <style>
         .button-container {
@@ -29,6 +30,7 @@
             /* Optional: Tambahkan jarak antara button-form */
         }
     </style>
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('asset/favicon-32x32.png')?>">
 
 </head>
 
@@ -113,7 +115,7 @@
                                     <hr>
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center" style="background-color:#a2dbc8; color:#747474; font-weight: bold; font-family: 'roboto';">No</th>
@@ -131,17 +133,18 @@
                                                 </tr>
                                             </tfoot>
 
-                                            <?php if (empty($data)) { ?>
-                                                <tbody>
+                                            <tbody>
+                                                <?php if (empty($data)) { ?>
                                                     <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
                                                         <td colspan="4">Tidak ada data mood yang tercatat pada 3 hari sebelum tanggal <span style="color:#747474; font-weight: bold; font-family: 'Roboto';"><?php echo date('d-M-Y ', strtotime($tgl_symptom)) ?></span> </td>
                                                     </tr>
-                                                </tbody>
-                                            <?php } else { ?>
+                                                <?php } else { ?>
 
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($data as $key) : $date = date('d-M-Y h:i A', strtotime($key['waktu'])) ?>
-                                                    <tbody>
+                                                    <?php $no = 1; ?>
+                                                    <?php foreach ($data as $key) : $date = date('d-M-Y H:i', strtotime($key['waktu'])) ?>
                                                         <tr>
                                                             <th scope="row" class="text-center" style="color:#747474; font-weight: bold; font-family: 'roboto';"><?php echo $no++ ?></th>
                                                             <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><?php echo $date ?></td>
@@ -150,10 +153,11 @@
                                                             <td class="text-center" style="color:#8c8c8c; font-weight: semi-bold; font-family: 'roboto';"><?php echo $key['ket_tambahan'] ?></td>
 
                                                         </tr>
-                                                    </tbody>
-                                                <?php endforeach; ?>
-                                            <?php } ?>
+                                                    <?php endforeach; ?>
+                                                <?php } ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
                                     </div>
                                 </div>
 
@@ -211,6 +215,15 @@
             <!-- Page level custom scripts -->
             <script src="<?php echo base_url('asset/fj/js/demo/chart-area-demo.js'); ?>"></script>
             <script src="<?php echo base_url('asset/fj/js/demo/chart-pie-demo.js'); ?>"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url('asset/dataTables/datatables.min.js'); ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                });
+            </script>
 
 </body>
 
